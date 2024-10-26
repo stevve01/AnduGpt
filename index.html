@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andrey | AI-powered Web Expert</title>
+    <title>Serapin Andrey | AI-powered Web Expert</title>
     <style>
         /* Переменные для цветовой палитры */
         :root {
             --primary-color: #4b79a1;
             --secondary-color: #283e51;
             --accent-color: #f4d06f;
-            --highlight-bg: #ffffff;
+            --highlight-bg: #fffbea;
             --highlight-border: #ffca28;
             --text-color: #333;
+            --highlight-text: #283e51;
+            --button-glow-color: rgba(255, 202, 40, 0.8);
+            --footer-glow-color: rgba(255, 192, 72, 0.7);
         }
 
         /* Основные стили */
@@ -30,6 +33,10 @@
             overflow-x: hidden;
             scroll-behavior: smooth;
             position: relative;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         @keyframes gradientAnimation {
@@ -41,13 +48,18 @@
         /* Анимация появления */
         .fade-in {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: translateY(30px);
+            transition: opacity 0.9s ease, transform 0.9s ease;
         }
         .fade-in.show {
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Плавная задержка для секций */
+        .fade-in-1 { transition-delay: 0.1s; }
+        .fade-in-2 { transition-delay: 0.2s; }
+        .fade-in-3 { transition-delay: 0.3s; }
 
         /* Контейнер для лендинга */
         .container {
@@ -66,6 +78,7 @@
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: textGradientAnimation 3s ease infinite;
         }
         p.subtitle {
             font-size: 1.4em;
@@ -74,19 +87,35 @@
             font-weight: 300;
         }
 
+        /* Анимация текста */
+        @keyframes textGradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         /* Фото профиля */
         .profile-photo {
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            margin: 0 auto 40px;
+            margin: 0 auto 20px;
             object-fit: cover;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
         .profile-photo:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transform: scale(1.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Имя под фото */
+        .name {
+            font-size: 1.5em;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            font-weight: bold;
+            text-transform: uppercase;
         }
 
         /* Секция "Обо мне" */
@@ -116,18 +145,20 @@
             gap: 30px;
             margin-top: 60px;
         }
+
         .service-item {
             padding: 25px;
             background: #ffffff;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.4s ease;
             text-align: left;
             transform: scale(1);
         }
         .service-item:hover {
             transform: scale(1.05);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            background-color: #f0f8ff; /* Легкий акцент при наведении */
         }
         .service-item h3 {
             font-size: 1.6em;
@@ -136,9 +167,6 @@
             display: flex;
             align-items: center;
             gap: 10px;
-        }
-        .service-item .icon {
-            font-size: 1.6em;
         }
         .service-item p {
             font-size: 1em;
@@ -150,44 +178,42 @@
         .service-item.highlight {
             border: 2px solid var(--highlight-border);
             padding: 25px;
+            background-color: var(--highlight-bg);
+            color: var(--highlight-text);
             border-radius: 20px;
-            background-color: #fffbea;
             box-shadow: 0px 10px 25px rgba(255, 202, 40, 0.4);
+            transform: scale(1.05);
+            position: relative;
+        }
+        .service-item.highlight::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 2px solid var(--highlight-border);
+            animation: pulseBorder 2s infinite ease-in-out;
+            border-radius: inherit;
         }
 
-        /* Фотография над кнопкой GitHub */
-        .github-image {
-            width: 80px;
-            margin: 20px auto 10px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-        }
-        .github-image:hover {
-            transform: scale(1.1);
-        }
-
-        /* Кнопка GitHub */
-        .github-button {
-            display: inline-block;
-            padding: 12px 35px;
-            margin-top: 10px;
-            font-size: 1.2em;
-            border-radius: 50px;
-            text-decoration: none;
-            color: #ffffff;
-            background-size: 200% 200%;
-            background-image: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s, background-position 0.4s ease-in-out;
-        }
-        .github-button:hover {
-            transform: translateY(-3px);
-            background-position: right center;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        /* Анимация пульсации рамки */
+        @keyframes pulseBorder {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
-        /* Анимированные кнопки */
+        /* Кнопки с эмодзи и свечением */
         .buttons-container {
             display: flex;
             justify-content: center;
@@ -195,7 +221,7 @@
             margin-top: 40px;
             flex-wrap: wrap;
         }
-        .contact-button, .project-button, .email-button {
+        .contact-button, .project-button, .email-button, .github-button {
             display: inline-block;
             padding: 15px 40px;
             font-size: 1.2em;
@@ -205,12 +231,39 @@
             background-size: 200% 200%;
             background-image: linear-gradient(135deg, var(--primary-color), var(--accent-color));
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s, background-position 0.4s ease-in-out;
+            transition: transform 0.3s, background-position 0.4s ease-in-out, box-shadow 0.3s ease;
+            position: relative;
         }
-        .contact-button:hover, .project-button:hover, .email-button:hover {
-            transform: translateY(-3px);
+        .contact-button:hover, .project-button:hover, .email-button:hover, .github-button:hover {
+            transform: translateY(-5px) scale(1.1);
             background-position: right center;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 30px var(--button-glow-color);
+            animation: pulseButton 1.5s infinite alternate;
+        }
+
+        @keyframes pulseButton {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        /* Текст под кнопками */
+        .portfolio-note {
+            font-size: 1em;
+            color: var(--primary-color);
+            margin-top: 20px;
+            padding: 10px;
+            border-top: 1px solid var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
         /* Нижняя часть сайта */
@@ -221,41 +274,45 @@
             text-align: center;
             padding: 20px;
             position: relative;
+            background-color: #283e51;
+            color: #ffffff;
         }
         footer p {
-            color: var(--text-color);
+            color: var(--footer-glow-color);
             font-size: 0.9em;
             text-transform: uppercase;
             font-weight: bold;
-            animation: glow 1.5s ease-in-out infinite alternate;
+            animation: glowFooter 2s ease-in-out infinite alternate;
         }
-        @keyframes glow {
-            0% { color: #888; text-shadow: none; }
-            100% { color: var(--accent-color); text-shadow: 0 0 8px var(--accent-color); }
+        @keyframes glowFooter {
+            0% { text-shadow: none; }
+            100% { text-shadow: 0 0 12px var(--footer-glow-color); }
         }
+
     </style>
 </head>
 <body>
 
     <!-- Контейнер для лендинга -->
     <div class="container">
-        <header class="fade-in">
-            <h1>Andrey - AI-powered Web Expert</h1>
+        <header class="fade-in fade-in-1">
+            <h1>Serapin Andrey - AI-powered Web Expert</h1>
             <p class="subtitle">Creating and optimizing websites using artificial intelligence</p>
         </header>
 
         <!-- Фото профиля -->
-        <img src="https://i.ibb.co/3YzBsbX/332222595-3305824813080909-8011720858928472867-n.jpg" alt="Andrey's Profile Photo" class="profile-photo fade-in">
+        <img src="https://i.ibb.co/3YzBsbX/332222595-3305824813080909-8011720858928472867-n.jpg" alt="Andrey's Profile Photo" class="profile-photo fade-in fade-in-2">
+        <p class="name">Serapin Andrey</p>
 
         <!-- Секция "Обо мне" -->
-        <section class="about-me fade-in">
+        <section class="about-me fade-in fade-in-3">
             <h2>About Me</h2>
-            <p>Hello, I'm Andrey! I'm a professional in web design and development, specializing in creating efficient and adaptive websites using artificial intelligence.</p>
+            <p>Hello, I'm <strong>Serapin Andrey</strong>! I'm a professional in web design and development, specializing in creating efficient and adaptive websites using artificial intelligence.</p>
             <p>My goal is to help businesses create websites that not only capture attention but also deliver results. Using AI, I automate content creation, SEO optimization, and data analysis for advanced, effective solutions.</p>
         </section>
 
         <!-- Секция услуг -->
-        <section class="services fade-in">
+        <section class="services fade-in fade-in-1">
             <div class="service-item">
                 <h3><span class="icon">🌐</span> AI-powered Website Creation</h3>
                 <p>Utilizing AI to create websites that adapt to business needs, with improved performance and custom solutions.</p>
@@ -278,23 +335,21 @@
             </div>
         </section>
 
-        <!-- Фото над кнопкой GitHub -->
-        <img src="https://i.ibb.co/MDLNGz2/i-18.webp" alt="Project Image" class="github-image fade-in">
-        
-        <!-- Кнопка GitHub -->
-        <a href="https://github.com/AndyGptpro/AndyGptpro/blob/main/README.md" class="github-button fade-in">GitHub</a>
-
-        <!-- Контейнер кнопок -->
-        <div class="buttons-container fade-in">
-            <a href="https://www.upwork.com/freelancers/~01f566cd0af44e507d" target="_blank" class="contact-button">Contact Me</a>
-            <a href="https://englpoemvstix.vercel.app" target="_blank" class="project-button">View Project</a>
-            <a href="mailto:andygptpro@gmail.com" target="_blank" class="email-button">Email Me</a>
+        <!-- Кнопки -->
+        <div class="buttons-container fade-in fade-in-2">
+            <a href="https://www.upwork.com/freelancers/~01f566cd0af44e507d" target="_blank" class="contact-button">💼 Contact Me</a>
+            <a href="https://englpoemvstix.vercel.app" target="_blank" class="project-button">🌐 View Project</a>
+            <a href="mailto:andygptpro@gmail.com" target="_blank" class="email-button">✉️ Email Me</a>
+            <a href="https://github.com/AndyGptpro/AndyGptpro/blob/main/README.md" class="github-button">🔗 GitHub</a>
         </div>
+
+        <!-- Текст о портфолио -->
+        <p class="portfolio-note">This website is a portfolio project created with the help of ChatGPT, following the instructions and planning provided by Serapin Andrey.</p>
     </div>
 
     <!-- Нижняя часть сайта -->
     <footer>
-        <p>© 2024 Andrey - AI-powered Web Expert. All rights reserved.</p>
+        <p>© 2024 Serapin Andrey - AI-powered Web Expert. All rights reserved.</p>
     </footer>
 
     <!-- Скрипт для анимации при прокрутке -->
@@ -313,6 +368,18 @@
         });
 
         fadeInElements.forEach(el => observer.observe(el));
+
+        // Запретить контекстное меню
+        document.addEventListener("contextmenu", function(e) {
+            e.preventDefault();
+        });
+
+        // Запретить копирование с помощью горячих клавиш
+        document.addEventListener("keydown", function(e) {
+            if (e.ctrlKey && (e.key === "c" || e.key === "x" || e.key === "u")) {
+                e.preventDefault();
+            }
+        });
     </script>
 </body>
 </html>
