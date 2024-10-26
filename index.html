@@ -37,6 +37,10 @@
             overflow-x: hidden;
             scroll-behavior: smooth;
             position: relative;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         @keyframes gradientAnimation {
@@ -173,6 +177,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.4s ease;
             text-align: left;
             transform: scale(1);
+            margin-bottom: 40px; /* Добавляем больше расстояния между блоками */
         }
         .service-item:hover, .project-item:hover {
             transform: scale(1.05);
@@ -275,6 +280,24 @@
             100% { transform: scale(1.1); }
         }
 
+        /* Заголовок проектов */
+        h2.featured-title {
+            font-size: 2.2em;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            position: relative;
+        }
+        h2.featured-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -10px;
+        }
+
         /* Текст под кнопками */
         .portfolio-note {
             font-size: 1em;
@@ -369,15 +392,17 @@
 
         <!-- Секция проектов -->
         <section class="projects fade-in fade-in-2">
-            <h2>Featured Projects</h2>
+            <h2 class="featured-title">Featured Projects</h2>
             <div class="project-item highlight">
                 <h3>🌐 Poetry Translation App</h3>
                 <p>Веб-приложение для перевода русской поэзии на английский с помощью ChatGPT. Приложение сохраняет эмоциональную и художественную ценность оригинала.</p>
+                <p>🔹 *App for translating Russian poetry into English, preserving the emotional and artistic value of the original.*</p>
                 <a href="https://englpoemvstix.vercel.app" target="_blank" class="project-button">🌐 View Project</a>
             </div>
             <div class="project-item highlight">
                 <h3>🌐 Miyagi Poetry App</h3>
                 <p>Приложение для отображения поэтических произведений Miyagi, где стихи и эмоции передаются с помощью ИИ. Вдохновляйтесь искусством через технологии!</p>
+                <p>🔹 *App showcasing Miyagi's poetry, where emotions are conveyed through the power of AI.*</p>
                 <a href="https://miyagiandy.vercel.app" target="_blank" class="project-button">🌐 View Project</a>
             </div>
         </section>
