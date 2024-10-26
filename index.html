@@ -37,10 +37,6 @@
             overflow-x: hidden;
             scroll-behavior: smooth;
             position: relative;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
         }
 
         @keyframes gradientAnimation {
@@ -169,7 +165,7 @@
             margin-top: 60px;
         }
 
-        .service-item {
+        .service-item, .project-item {
             padding: 25px;
             background: #ffffff;
             border-radius: 15px;
@@ -178,12 +174,12 @@
             text-align: left;
             transform: scale(1);
         }
-        .service-item:hover {
+        .service-item:hover, .project-item:hover {
             transform: scale(1.05);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             background-color: #f0f8ff; /* Легкий акцент при наведении */
         }
-        .service-item h3 {
+        .service-item h3, .project-item h3 {
             font-size: 1.6em;
             color: var(--primary-color);
             margin-bottom: 10px;
@@ -191,14 +187,14 @@
             align-items: center;
             gap: 10px;
         }
-        .service-item p {
+        .service-item p, .project-item p {
             font-size: 1em;
             color: #555;
             line-height: 1.6;
         }
 
-        /* Выделенные услуги */
-        .service-item.highlight {
+        /* Выделенные услуги и проекты */
+        .service-item.highlight, .project-item.highlight {
             border: 2px solid var(--highlight-border);
             padding: 25px;
             background-color: var(--highlight-bg);
@@ -208,7 +204,7 @@
             transform: scale(1.05);
             position: relative;
         }
-        .service-item.highlight::before {
+        .service-item.highlight::before, .project-item.highlight::before {
             content: '';
             position: absolute;
             top: -5px;
@@ -371,10 +367,24 @@
             </div>
         </section>
 
+        <!-- Секция проектов -->
+        <section class="projects fade-in fade-in-2">
+            <h2>Featured Projects</h2>
+            <div class="project-item highlight">
+                <h3>🌐 Poetry Translation App</h3>
+                <p>Веб-приложение для перевода русской поэзии на английский с помощью ChatGPT. Приложение сохраняет эмоциональную и художественную ценность оригинала.</p>
+                <a href="https://englpoemvstix.vercel.app" target="_blank" class="project-button">🌐 View Project</a>
+            </div>
+            <div class="project-item highlight">
+                <h3>🌐 Miyagi Poetry App</h3>
+                <p>Приложение для отображения поэтических произведений Miyagi, где стихи и эмоции передаются с помощью ИИ. Вдохновляйтесь искусством через технологии!</p>
+                <a href="https://miyagiandy.vercel.app" target="_blank" class="project-button">🌐 View Project</a>
+            </div>
+        </section>
+
         <!-- Кнопки -->
         <div class="buttons-container fade-in fade-in-2">
             <a href="https://www.upwork.com/freelancers/~01f566cd0af44e507d" target="_blank" class="contact-button">💼 Contact Me</a>
-            <a href="https://englpoemvstix.vercel.app" target="_blank" class="project-button">🌐 View Project</a>
             <a href="mailto:andygptpro@gmail.com" target="_blank" class="email-button">✉️ Email Me</a>
             <a href="https://github.com/AndyGptpro/AndyGptpro/blob/main/README.md" class="github-button">🔗 GitHub</a>
             <a href="https://kwork.ru/user/andygptpro" target="_blank" class="kwork-button">🛠 Contact on Kwork</a>
