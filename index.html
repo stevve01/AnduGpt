@@ -16,6 +16,8 @@
             --highlight-text: #283e51;
             --button-glow-color: rgba(255, 202, 40, 0.8);
             --footer-glow-color: rgba(255, 192, 72, 0.7);
+            --kwork-button-color: #1dbf73;
+            --kwork-button-glow: rgba(29, 191, 115, 0.7);
         }
 
         /* Основные стили */
@@ -241,7 +243,32 @@
             animation: pulseButton 1.5s infinite alternate;
         }
 
+        /* Кнопка Kwork */
+        .kwork-button {
+            display: inline-block;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            text-decoration: none;
+            color: #ffffff;
+            background-color: var(--kwork-button-color);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, background-color 0.4s, box-shadow 0.3s;
+            position: relative;
+        }
+        .kwork-button:hover {
+            transform: translateY(-5px) scale(1.1);
+            background-color: var(--kwork-button-color);
+            box-shadow: 0 15px 30px var(--kwork-button-glow);
+            animation: pulseKwork 1.5s infinite alternate;
+        }
+
         @keyframes pulseButton {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        @keyframes pulseKwork {
             0% { transform: scale(1); }
             100% { transform: scale(1.1); }
         }
@@ -341,6 +368,7 @@
             <a href="https://englpoemvstix.vercel.app" target="_blank" class="project-button">🌐 View Project</a>
             <a href="mailto:andygptpro@gmail.com" target="_blank" class="email-button">✉️ Email Me</a>
             <a href="https://github.com/AndyGptpro/AndyGptpro/blob/main/README.md" class="github-button">🔗 GitHub</a>
+            <a href="https://kwork.ru/user/andygptpro" target="_blank" class="kwork-button">🌟 Visit Kwork</a>
         </div>
 
         <!-- Текст о портфолио -->
