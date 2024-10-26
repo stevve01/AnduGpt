@@ -18,6 +18,8 @@
             --footer-glow-color: rgba(255, 192, 72, 0.7);
             --kwork-button-color: #1dbf73;
             --kwork-button-glow: rgba(29, 191, 115, 0.7);
+            --freelancer-button-color: #007fed;
+            --freelancer-button-glow: rgba(0, 127, 237, 0.7);
         }
 
         /* Основные стили */
@@ -115,9 +117,28 @@
         .name {
             font-size: 1.5em;
             color: var(--primary-color);
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             font-weight: bold;
             text-transform: uppercase;
+        }
+
+        /* Кнопка Freelancer под именем */
+        .freelancer-button {
+            display: inline-block;
+            padding: 12px 35px;
+            margin-top: 20px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            text-decoration: none;
+            color: #ffffff;
+            background-color: var(--freelancer-button-color);
+            box-shadow: 0 10px 20px rgba(0, 127, 237, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s ease, background-color 0.4s ease;
+        }
+        .freelancer-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            background-color: var(--freelancer-button-color);
+            box-shadow: 0 15px 30px var(--freelancer-button-glow);
         }
 
         /* Секция "Обо мне" */
@@ -223,7 +244,7 @@
             margin-top: 40px;
             flex-wrap: wrap;
         }
-        .contact-button, .project-button, .email-button, .github-button {
+        .contact-button, .project-button, .email-button, .github-button, .kwork-button {
             display: inline-block;
             padding: 15px 40px;
             font-size: 1.2em;
@@ -236,39 +257,24 @@
             transition: transform 0.3s, background-position 0.4s ease-in-out, box-shadow 0.3s ease;
             position: relative;
         }
-        .contact-button:hover, .project-button:hover, .email-button:hover, .github-button:hover {
+        .contact-button:hover, .project-button:hover, .email-button:hover, .github-button:hover, .kwork-button:hover {
             transform: translateY(-5px) scale(1.1);
             background-position: right center;
             box-shadow: 0 15px 30px var(--button-glow-color);
             animation: pulseButton 1.5s infinite alternate;
         }
 
-        /* Кнопка Kwork */
+        /* Kwork кнопка */
         .kwork-button {
-            display: inline-block;
-            padding: 15px 40px;
-            font-size: 1.2em;
-            border-radius: 50px;
-            text-decoration: none;
-            color: #ffffff;
             background-color: var(--kwork-button-color);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s, background-color 0.4s, box-shadow 0.3s;
-            position: relative;
+            box-shadow: 0 10px 20px rgba(29, 191, 115, 0.2);
         }
         .kwork-button:hover {
-            transform: translateY(-5px) scale(1.1);
             background-color: var(--kwork-button-color);
             box-shadow: 0 15px 30px var(--kwork-button-glow);
-            animation: pulseKwork 1.5s infinite alternate;
         }
 
         @keyframes pulseButton {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
-        }
-
-        @keyframes pulseKwork {
             0% { transform: scale(1); }
             100% { transform: scale(1.1); }
         }
@@ -331,6 +337,9 @@
         <img src="https://i.ibb.co/3YzBsbX/332222595-3305824813080909-8011720858928472867-n.jpg" alt="Andrey's Profile Photo" class="profile-photo fade-in fade-in-2">
         <p class="name">Serapin Andrey</p>
 
+        <!-- Кнопка Freelancer -->
+        <a href="https://www.freelancer.com/u/AndroVision" target="_blank" class="freelancer-button">💼 Contact on Freelancer</a>
+
         <!-- Секция "Обо мне" -->
         <section class="about-me fade-in fade-in-3">
             <h2>About Me</h2>
@@ -368,7 +377,7 @@
             <a href="https://englpoemvstix.vercel.app" target="_blank" class="project-button">🌐 View Project</a>
             <a href="mailto:andygptpro@gmail.com" target="_blank" class="email-button">✉️ Email Me</a>
             <a href="https://github.com/AndyGptpro/AndyGptpro/blob/main/README.md" class="github-button">🔗 GitHub</a>
-            <a href="https://kwork.ru/user/andygptpro" target="_blank" class="kwork-button">🌟 Visit Kwork</a>
+            <a href="https://kwork.ru/user/andygptpro" target="_blank" class="kwork-button">🛠 Contact on Kwork</a>
         </div>
 
         <!-- Текст о портфолио -->
