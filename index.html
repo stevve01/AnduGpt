@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <!-- Установите начальный язык как русский -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serapin Andrey | AI-powered Web Expert</title>
+    <title data-i18n="title">Серапин Андрей | Веб-Эксперт с ИИ</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     
     <!-- Google Fonts -->
@@ -90,6 +91,10 @@
             --footer-text-color: #ffffff;
             --footer-link-color: #f4d06f;
             --footer-link-hover: #ffd700;
+            /* Language Toggle Button */
+            --lang-button-bg: none;
+            --lang-button-color: var(--text-color);
+            --lang-button-hover-color: var(--accent-color);
         }
 
         /* Base Styles */
@@ -176,6 +181,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
         .nav-logo {
             font-size: 1.5em;
@@ -217,6 +223,16 @@
             transform: translateY(-2px);
         }
 
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+
         /* Theme Toggle Button */
         .theme-toggle {
             cursor: pointer;
@@ -225,12 +241,59 @@
             border: none;
             color: var(--text-color);
             transition: color 0.3s ease, transform 0.3s ease;
+            margin-left: 10px;
         }
         .theme-toggle:hover {
             transform: rotate(20deg);
         }
         body.dark-mode .theme-toggle {
             color: var(--accent-color);
+        }
+
+        /* Language Toggle Button */
+        .language-toggle {
+            cursor: pointer;
+            font-size: 1em;
+            background: var(--lang-button-bg);
+            border: 2px solid var(--text-color);
+            border-radius: 5px;
+            padding: 5px 10px;
+            color: var(--lang-button-color);
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+            margin-left: 10px;
+        }
+        .language-toggle:hover {
+            background-color: var(--accent-color);
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        /* Responsive Navigation */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            .nav-links {
+                position: fixed;
+                top: 60px; /* Высота навбара */
+                right: 0;
+                width: 200px;
+                height: calc(100% - 60px);
+                background-color: rgba(255, 255, 255, 0.95);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
+                transform: translateX(100%);
+                transition: transform 0.3s ease-in-out;
+                box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+                z-index: 999;
+            }
+            .nav-links li {
+                margin-bottom: 20px;
+            }
+            .nav-links.active {
+                transform: translateX(0);
+            }
         }
 
         /* Main Container */
@@ -871,104 +934,108 @@
     <!-- Navigation Bar -->
     <nav>
         <div class="nav-container">
-            <a href="#home" class="nav-logo">Serapin Andrey</a>
+            <a href="#home" class="nav-logo" data-i18n="nav_logo">Серапин Андрей</a>
+            <button class="hamburger" aria-label="Open menu"><i class="fas fa-bars"></i></button>
             <ul class="nav-links">
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about" data-i18n="nav_about">Обо мне</a></li>
+                <li><a href="#services" data-i18n="nav_services">Услуги</a></li>
+                <li><a href="#projects" data-i18n="nav_projects">Проекты</a></li>
+                <li><a href="#contact" data-i18n="nav_contact">Контакты</a></li>
             </ul>
-            <button class="theme-toggle" aria-label="Toggle Dark/Light Theme"><i class="fas fa-moon"></i></button>
+            <div>
+                <button class="theme-toggle" aria-label="Toggle Dark/Light Theme"><i class="fas fa-moon"></i></button>
+                <button class="language-toggle" aria-label="Change Language" id="language-toggle">RU</button>
+            </div>
         </div>
     </nav>
 
     <!-- Main Container -->
     <div class="container" id="home">
         <header class="fade-in fade-in-1" data-aos="fade-up">
-            <h1>Serapin Andrey - AI-powered Web Expert</h1>
-            <p class="subtitle">Creating and optimizing websites using artificial intelligence</p>
+            <h1 data-i18n="header_title">Серапин Андрей - Веб-Эксперт с ИИ</h1>
+            <p class="subtitle" data-i18n="header_subtitle">Создание и оптимизация веб-сайтов с использованием искусственного интеллекта</p>
         </header>
 
         <!-- Profile Photo -->
         <img src="https://i.ibb.co/3YzBsbX/332222595-3305824813080909-8011720858928472867-n.jpg" alt="Profile photo of Serapin Andrey" class="profile-photo fade-in fade-in-2" loading="lazy" data-aos="fade-up">
-        <p class="name">Serapin Andrey</p>
+        <p class="name" data-i18n="profile_name">Серапин Андрей</p>
 
         <!-- Freelancer Button -->
-        <a href="https://www.freelancer.com/u/AndroVision" target="_blank" rel="noopener noreferrer" class="freelancer-button" aria-label="Contact AndroVision on Freelancer"><i class="fab fa-freelancer"></i> Contact on Freelancer</a>
+        <a href="https://www.freelancer.com/u/AndroVision" target="_blank" rel="noopener noreferrer" class="freelancer-button" aria-label="Contact AndroVision on Freelancer" data-i18n="button_freelancer"><i class="fab fa-freelancer"></i> Связаться на Freelancer</a>
 
         <!-- About Me Section -->
         <section class="about-me fade-in fade-in-3" id="about" data-aos="fade-up">
-            <h2>About Me</h2>
-            <p>Hello, I'm <strong>Serapin Andrey</strong>! I'm a professional in web design and development, specializing in creating efficient and adaptive websites using artificial intelligence.</p>
-            <p>My goal is to help businesses create websites that not only capture attention but also deliver results. Using AI, I automate content creation, SEO optimization, and data analysis for advanced, effective solutions.</p>
+            <h2 data-i18n="about_title">Обо мне</h2>
+            <p data-i18n="about_paragraph1">Здравствуйте, я <strong>Серапин Андрей</strong>! Я профессионал в области веб-дизайна и разработки, специализирующийся на создании эффективных и адаптивных веб-сайтов с использованием искусственного интеллекта.</p>
+            <p data-i18n="about_paragraph2">Моя цель — помочь бизнесам создавать сайты, которые не только привлекают внимание, но и приносят результаты. Используя ИИ, я автоматизирую создание контента, SEO-оптимизацию и анализ данных для продвинутых и эффективных решений.</p>
         </section>
 
         <!-- Services Section -->
         <section class="services fade-in fade-in-1" id="services" data-aos="fade-up">
             <div class="service-item">
-                <h3><i class="fas fa-laptop-code"></i> AI-powered Website Creation</h3>
-                <p>Utilizing AI to create websites that adapt to business needs, with improved performance and custom solutions.</p>
+                <h3><i class="fas fa-laptop-code"></i> <span data-i18n="service_ai_creation">Создание веб-сайтов с ИИ</span></h3>
+                <p data-i18n="service_ai_creation_desc">Использование ИИ для создания веб-сайтов, адаптирующихся к потребностям бизнеса, с улучшенной производительностью и индивидуальными решениями.</p>
             </div>
             <div class="service-item highlight">
-                <h3><i class="fas fa-robot"></i> Mastery of ChatGPT</h3>
-                <p>Expertise in advanced conversational skills, prompt engineering, and using ChatGPT for coding, content generation, and creative solutions.</p>
+                <h3><i class="fas fa-robot"></i> <span data-i18n="service_chatgpt_mastery">Мастерство ChatGPT</span></h3>
+                <p data-i18n="service_chatgpt_mastery_desc">Экспертиза в продвинутых навыках общения, разработке подсказок и использовании ChatGPT для кодирования, генерации контента и креативных решений.</p>
             </div>
             <div class="service-item">
-                <h3><i class="fas fa-search"></i> SEO Optimization</h3>
-                <p>Using AI to analyze and optimize content, increasing visibility and attracting the target audience.</p>
+                <h3><i class="fas fa-search"></i> <span data-i18n="service_seo">SEO-оптимизация</span></h3>
+                <p data-i18n="service_seo_desc">Использование ИИ для анализа и оптимизации контента, повышения видимости и привлечения целевой аудитории.</p>
             </div>
             <div class="service-item highlight">
-                <h3><i class="fas fa-code"></i> Advanced Programming with ChatGPT</h3>
-                <p>Developing scripts, tools, and automations by leveraging ChatGPT’s coding capabilities for complex problem-solving.</p>
+                <h3><i class="fas fa-code"></i> <span data-i18n="service_advanced_programming">Продвинутое программирование с ChatGPT</span></h3>
+                <p data-i18n="service_advanced_programming_desc">Разработка скриптов, инструментов и автоматизаций с использованием возможностей кодирования ChatGPT для решения сложных задач.</p>
             </div>
             <div class="service-item">
-                <h3><i class="fas fa-file-alt"></i> Content Automation</h3>
-                <p>Automating the creation of text and images using AI, which saves time and improves content quality.</p>
+                <h3><i class="fas fa-file-alt"></i> <span data-i18n="service_content_automation">Автоматизация контента</span></h3>
+                <p data-i18n="service_content_automation_desc">Автоматизация создания текста и изображений с использованием ИИ, что экономит время и повышает качество контента.</p>
             </div>
         </section>
 
         <!-- Projects Section -->
         <section class="projects fade-in fade-in-2" id="projects" data-aos="fade-up">
-            <h2 class="featured-title">Featured Projects</h2>
+            <h2 class="featured-title" data-i18n="projects_title">Избранные проекты</h2>
             <div class="project-item highlight">
-                <h3><i class="fas fa-globe"></i> Poetry Translation App</h3>
-                <p>A web application for translating Russian poetry into English using ChatGPT. The app preserves the emotional and artistic value of the original.</p>
-                <p>🔹 *App for translating Russian poetry into English, preserving the emotional and artistic value of the original.*</p>
-                <a href="https://englpoemvstix.vercel.app" target="_blank" rel="noopener noreferrer" class="project-button" aria-label="View Poetry Translation App Project"><i class="fas fa-external-link-alt"></i> View Project</a>
+                <h3><i class="fas fa-globe"></i> <span data-i18n="project_poetry_translation">Приложение для перевода поэзии</span></h3>
+                <p data-i18n="project_poetry_translation_desc">Веб-приложение для перевода русской поэзии на английский язык с использованием ChatGPT. Приложение сохраняет эмоциональную и художественную ценность оригинала.</p>
+                <p>🔹 <span data-i18n="project_poetry_translation_note">*Приложение для перевода русской поэзии на английский язык, сохраняющее эмоциональную и художественную ценность оригинала.*</span></p>
+                <a href="https://englpoemvstix.vercel.app" target="_blank" rel="noopener noreferrer" class="project-button" aria-label="View Poetry Translation App Project" data-i18n="projects_button_view_project"><i class="fas fa-external-link-alt"></i> Посмотреть проект</a>
             </div>
             <div class="project-item highlight">
-                <h3><i class="fas fa-globe"></i> Miyagi Poetry App</h3>
-                <p>An application showcasing Miyagi's poetry, where emotions are conveyed through the power of AI. Inspire yourself with art through technology!</p>
-                <p>🔹 *App showcasing Miyagi's poetry, where emotions are conveyed through the power of AI.*</p>
-                <a href="https://miyagiandy.vercel.app" target="_blank" rel="noopener noreferrer" class="project-button" aria-label="View Miyagi Poetry App Project"><i class="fas fa-external-link-alt"></i> View Project</a>
+                <h3><i class="fas fa-globe"></i> <span data-i18n="project_miyagi_poetry">Приложение поэзии Мияги</span></h3>
+                <p data-i18n="project_miyagi_poetry_desc">Приложение, демонстрирующее поэзию Мияги, где эмоции передаются силой ИИ. Вдохновляйтесь искусством через технологии!</p>
+                <p>🔹 <span data-i18n="project_miyagi_poetry_note">*Приложение, демонстрирующее поэзию Мияги, где эмоции передаются силой ИИ.*</span></p>
+                <a href="https://miyagiandy.vercel.app" target="_blank" rel="noopener noreferrer" class="project-button" aria-label="View Miyagi Poetry App Project" data-i18n="projects_button_view_project"><i class="fas fa-external-link-alt"></i> Посмотреть проект</a>
             </div>
             <div class="project-item highlight">
-                <h3><i class="fas fa-globe"></i> Elon Musk News App</h3>
-                <p>This app provides fresh and real-time news updates on Elon Musk, showcasing the latest developments in his companies and ventures.</p>
-                <p>🔹 *Stay updated with all things Elon Musk.*</p>
-                <a href="https://ilon-mask-andy.vercel.app" target="_blank" rel="noopener noreferrer" class="project-button" aria-label="View Elon Musk News App Project"><i class="fas fa-external-link-alt"></i> View Project</a>
+                <h3><i class="fas fa-globe"></i> <span data-i18n="project_elon_musk_news">Новостное приложение об Элон Маске</span></h3>
+                <p data-i18n="project_elon_musk_news_desc">Это приложение предоставляет свежие и актуальные новости об Элон Маске, демонстрируя последние разработки в его компаниях и начинаниях.</p>
+                <p>🔹 <span data-i18n="project_elon_musk_news_note">*Будьте в курсе всего, что касается Элона Маска.*</span></p>
+                <a href="https://ilon-mask-andy.vercel.app" target="_blank" rel="noopener noreferrer" class="project-button" aria-label="View Elon Musk News App Project" data-i18n="projects_button_view_project"><i class="fas fa-external-link-alt"></i> Посмотреть проект</a>
             </div>
         </section>
 
         <!-- Contact Form -->
         <section class="contact-form fade-in fade-in-1" id="contact" data-aos="fade-up">
-            <h2>Contact Me</h2>
+            <h2 data-i18n="contact_title">Свяжитесь со мной</h2>
             <form action="telegram.php" method="POST" novalidate>
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required aria-required="true" placeholder="Your Name">
+                <label for="name" data-i18n="contact_label_name">Имя</label>
+                <input type="text" id="name" name="name" required aria-required="true" placeholder="Ваше имя" data-placeholder="contact_placeholder_name">
 
-                <label for="email">Email</label>
-                <input type="email" id="email" name="_replyto" required aria-required="true" placeholder="Your Email">
+                <label for="email" data-i18n="contact_label_email">Электронная почта</label>
+                <input type="email" id="email" name="_replyto" required aria-required="true" placeholder="Ваша почта" data-placeholder="contact_placeholder_email">
 
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="5" required aria-required="true" placeholder="Your Message"></textarea>
+                <label for="message" data-i18n="contact_label_message">Сообщение</label>
+                <textarea id="message" name="message" rows="5" required aria-required="true" placeholder="Ваше сообщение" data-placeholder="contact_placeholder_message"></textarea>
 
-                <button type="submit">Send Message</button>
+                <button type="submit" data-i18n="contact_button_send">Отправить сообщение</button>
             </form>
         </section>
 
         <!-- Portfolio Note -->
-        <p class="portfolio-note">This website is a portfolio project created with the help of ChatGPT, following the instructions and planning provided by Serapin Andrey.</p>
+        <p class="portfolio-note" data-i18n="portfolio_note">Этот сайт — портфолио, созданное с помощью ChatGPT по инструкциям и планированию Серапина Андрея.</p>
     </div>
 
     <!-- Back to Top Button -->
@@ -978,10 +1045,10 @@
     <footer>
         <div class="footer-content">
             <ul class="footer-links">
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about" data-i18n="footer_about">Обо мне</a></li>
+                <li><a href="#services" data-i18n="footer_services">Услуги</a></li>
+                <li><a href="#projects" data-i18n="footer_projects">Проекты</a></li>
+                <li><a href="#contact" data-i18n="footer_contact">Контакты</a></li>
             </ul>
             <div class="social-footer-icons">
                 <a href="https://www.upwork.com/freelancers/~01f566cd0af44e507d" target="_blank" rel="noopener noreferrer" aria-label="Connect on Upwork"><i class="fab fa-upwork"></i></a>
@@ -990,8 +1057,8 @@
                 <a href="https://kwork.ru/user/andygptpro" target="_blank" rel="noopener noreferrer" aria-label="Connect on Kwork"><i class="fas fa-tools"></i></a>
                 <a href="https://freelance.habr.com/freelancers/AndyGptpro" target="_blank" rel="noopener noreferrer" aria-label="Connect on Habr Freelance"><i class="fas fa-briefcase"></i></a>
             </div>
-            <div class="copyright">
-                © 2024-2025 Serapin Andrey - AI-powered Web Expert. All rights reserved.
+            <div class="copyright" data-i18n="copyright">
+                © 2024-2025 Серапин Андрей - Веб-Эксперт с ИИ. Все права защищены.
             </div>
         </div>
     </footer>
@@ -1000,9 +1067,9 @@
     <div class="modal" id="boostyModal">
         <div class="modal-content">
             <button class="modal-close" aria-label="Close Modal">&times;</button>
-            <h2>Support Me on Boosty!</h2>
-            <p>If you enjoy my work and want to support me, please consider subscribing to my Boosty account.</p>
-            <a href="https://boosty.to/andygptpro" target="_blank" rel="noopener noreferrer">Visit Boosty</a>
+            <h2 data-i18n="modal_title">Поддержите меня на Boosty!</h2>
+            <p data-i18n="modal_description">Если вам нравится моя работа и вы хотите меня поддержать, пожалуйста, рассмотрите возможность подписки на мой аккаунт Boosty.</p>
+            <a href="https://boosty.to/andygptpro" target="_blank" rel="noopener noreferrer" data-i18n="modal_button_visit">Посетить Boosty</a>
         </div>
     </div>
 
@@ -1013,20 +1080,168 @@
     <!-- Font Awesome JS (Optional for better icon control) -->
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 
-    <!-- JavaScript for Animations, Theme Toggle, Back-to-Top, and Modal -->
+    <!-- JavaScript for Animations, Theme Toggle, Back-to-Top, Modal, Hamburger Menu, and Language Toggle -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Initialize AOS
+            // Инициализация AOS
             AOS.init({
                 duration: 1000,
                 once: true
             });
 
+            // Объект переводов
+            const translations = {
+                en: {
+                    title: "Serapin Andrey | AI-powered Web Expert",
+                    nav_logo: "Serapin Andrey",
+                    nav_about: "About Me",
+                    nav_services: "Services",
+                    nav_projects: "Projects",
+                    nav_contact: "Contact",
+                    header_title: "Serapin Andrey - AI-powered Web Expert",
+                    header_subtitle: "Creating and optimizing websites using artificial intelligence",
+                    profile_name: "Serapin Andrey",
+                    button_freelancer: "Contact on Freelancer",
+                    about_title: "About Me",
+                    about_paragraph1: "Hello, I'm <strong>Serapin Andrey</strong>! I'm a professional in web design and development, specializing in creating efficient and adaptive websites using artificial intelligence.",
+                    about_paragraph2: "My goal is to help businesses create websites that not only capture attention but also deliver results. Using AI, I automate content creation, SEO optimization, and data analysis for advanced, effective solutions.",
+                    service_ai_creation: "AI-powered Website Creation",
+                    service_ai_creation_desc: "Utilizing AI to create websites that adapt to business needs, with improved performance and custom solutions.",
+                    service_chatgpt_mastery: "Mastery of ChatGPT",
+                    service_chatgpt_mastery_desc: "Expertise in advanced conversational skills, prompt engineering, and using ChatGPT for coding, content generation, and creative solutions.",
+                    service_seo: "SEO Optimization",
+                    service_seo_desc: "Using AI to analyze and optimize content, increasing visibility and attracting the target audience.",
+                    service_advanced_programming: "Advanced Programming with ChatGPT",
+                    service_advanced_programming_desc: "Developing scripts, tools, and automations by leveraging ChatGPT’s coding capabilities for complex problem-solving.",
+                    service_content_automation: "Content Automation",
+                    service_content_automation_desc: "Automating the creation of text and images using AI, which saves time and improves content quality.",
+                    projects_title: "Featured Projects",
+                    project_poetry_translation: "Poetry Translation App",
+                    project_poetry_translation_desc: "A web application for translating Russian poetry into English using ChatGPT. The app preserves the emotional and artistic value of the original.",
+                    project_poetry_translation_note: "*App for translating Russian poetry into English, preserving the emotional and artistic value of the original.*",
+                    project_miyagi_poetry: "Miyagi Poetry App",
+                    project_miyagi_poetry_desc: "An application showcasing Miyagi's poetry, where emotions are conveyed through the power of AI. Inspire yourself with art through technology!",
+                    project_miyagi_poetry_note: "*App showcasing Miyagi's poetry, where emotions are conveyed through the power of AI.*",
+                    project_elon_musk_news: "Elon Musk News App",
+                    project_elon_musk_news_desc: "This app provides fresh and real-time news updates on Elon Musk, showcasing the latest developments in his companies and ventures.",
+                    project_elon_musk_news_note: "*Stay updated with all things Elon Musk.*",
+                    projects_button_view_project: "View Project",
+                    contact_title: "Contact Me",
+                    contact_label_name: "Name",
+                    contact_label_email: "Email",
+                    contact_label_message: "Message",
+                    contact_placeholder_name: "Your Name",
+                    contact_placeholder_email: "Your Email",
+                    contact_placeholder_message: "Your Message",
+                    contact_button_send: "Send Message",
+                    portfolio_note: "This website is a portfolio project created with the help of ChatGPT, following the instructions and planning provided by Serapin Andrey.",
+                    footer_about: "About Me",
+                    footer_services: "Services",
+                    footer_projects: "Projects",
+                    footer_contact: "Contact",
+                    modal_title: "Support Me on Boosty!",
+                    modal_description: "If you enjoy my work and want to support me, please consider subscribing to my Boosty account.",
+                    modal_button_visit: "Visit Boosty",
+                    copyright:
+                        "© 2024-2025 Serapin Andrey - AI-powered Web Expert. All rights reserved."
+                },
+                ru: {
+                    title: "Серапин Андрей | Веб-Эксперт с ИИ",
+                    nav_logo: "Серапин Андрей",
+                    nav_about: "Обо мне",
+                    nav_services: "Услуги",
+                    nav_projects: "Проекты",
+                    nav_contact: "Контакты",
+                    header_title: "Серапин Андрей - Веб-Эксперт с ИИ",
+                    header_subtitle: "Создание и оптимизация веб-сайтов с использованием искусственного интеллекта",
+                    profile_name: "Серапин Андрей",
+                    button_freelancer: "Связаться на Freelancer",
+                    about_title: "Обо мне",
+                    about_paragraph1: "Здравствуйте, я <strong>Серапин Андрей</strong>! Я профессионал в области веб-дизайна и разработки, специализирующийся на создании эффективных и адаптивных веб-сайтов с использованием искусственного интеллекта.",
+                    about_paragraph2: "Моя цель — помочь бизнесам создавать сайты, которые не только привлекают внимание, но и приносят результаты. Используя ИИ, я автоматизирую создание контента, SEO-оптимизацию и анализ данных для продвинутых и эффективных решений.",
+                    service_ai_creation: "Создание веб-сайтов с ИИ",
+                    service_ai_creation_desc: "Использование ИИ для создания веб-сайтов, адаптирующихся к потребностям бизнеса, с улучшенной производительностью и индивидуальными решениями.",
+                    service_chatgpt_mastery: "Мастерство ChatGPT",
+                    service_chatgpt_mastery_desc: "Экспертиза в продвинутых навыках общения, разработке подсказок и использовании ChatGPT для кодирования, генерации контента и креативных решений.",
+                    service_seo: "SEO-оптимизация",
+                    service_seo_desc: "Использование ИИ для анализа и оптимизации контента, повышения видимости и привлечения целевой аудитории.",
+                    service_advanced_programming: "Продвинутое программирование с ChatGPT",
+                    service_advanced_programming_desc: "Разработка скриптов, инструментов и автоматизаций с использованием возможностей кодирования ChatGPT для решения сложных задач.",
+                    service_content_automation: "Автоматизация контента",
+                    service_content_automation_desc: "Автоматизация создания текста и изображений с использованием ИИ, что экономит время и повышает качество контента.",
+                    projects_title: "Избранные проекты",
+                    project_poetry_translation: "Приложение для перевода поэзии",
+                    project_poetry_translation_desc: "Веб-приложение для перевода русской поэзии на английский язык с использованием ChatGPT. Приложение сохраняет эмоциональную и художественную ценность оригинала.",
+                    project_poetry_translation_note: "*Приложение для перевода русской поэзии на английский язык, сохраняющее эмоциональную и художественную ценность оригинала.*",
+                    project_miyagi_poetry: "Приложение поэзии Мияги",
+                    project_miyagi_poetry_desc: "Приложение, демонстрирующее поэзию Мияги, где эмоции передаются силой ИИ. Вдохновляйтесь искусством через технологии!",
+                    project_miyagi_poetry_note: "*Приложение, демонстрирующее поэзию Мияги, где эмоции передаются силой ИИ.*",
+                    project_elon_musk_news: "Новостное приложение об Элон Маске",
+                    project_elon_musk_news_desc: "Это приложение предоставляет свежие и актуальные новости об Элон Маске, демонстрируя последние разработки в его компаниях и начинаниях.",
+                    project_elon_musk_news_note: "*Будьте в курсе всего, что касается Элона Маска.*",
+                    projects_button_view_project: "Посмотреть проект",
+                    contact_title: "Свяжитесь со мной",
+                    contact_label_name: "Имя",
+                    contact_label_email: "Электронная почта",
+                    contact_label_message: "Сообщение",
+                    contact_placeholder_name: "Ваше имя",
+                    contact_placeholder_email: "Ваша почта",
+                    contact_placeholder_message: "Ваше сообщение",
+                    contact_button_send: "Отправить сообщение",
+                    portfolio_note: "Этот сайт — портфолио, созданное с помощью ChatGPT по инструкциям и планированию Серапина Андрея.",
+                    footer_about: "Обо мне",
+                    footer_services: "Услуги",
+                    footer_projects: "Проекты",
+                    footer_contact: "Контакты",
+                    modal_title: "Поддержите меня на Boosty!",
+                    modal_description: "Если вам нравится моя работа и вы хотите меня поддержать, пожалуйста, рассмотрите возможность подписки на мой аккаунт Boosty.",
+                    modal_button_visit: "Посетить Boosty",
+                    copyright:
+                        "© 2024-2025 Серапин Андрей - Веб-Эксперт с ИИ. Все права защищены."
+                }
+            };
+
+            // Текущий язык из localStorage или по умолчанию 'ru'
+            let currentLanguage = localStorage.getItem('language') || 'ru';
+
+            const elementsToTranslate = document.querySelectorAll('[data-i18n]');
+            const placeholdersToTranslate = document.querySelectorAll('[data-placeholder]');
+            const languageToggleButton = document.getElementById('language-toggle');
+
+            function translatePage(language) {
+                elementsToTranslate.forEach(element => {
+                    const key = element.getAttribute('data-i18n');
+                    if (translations[language][key]) {
+                        element.innerHTML = translations[language][key];
+                    }
+                });
+
+                placeholdersToTranslate.forEach(element => {
+                    const key = element.getAttribute('data-placeholder');
+                    if (translations[language][key]) {
+                        element.setAttribute('placeholder', translations[language][key]);
+                    }
+                });
+
+                // Обновление текста на кнопке переключения языка
+                languageToggleButton.textContent = language === 'ru' ? 'EN' : 'RU';
+            }
+
+            // Перевести страницу при загрузке
+            translatePage(currentLanguage);
+
+            // Обработчик клика по кнопке переключения языка
+            languageToggleButton.addEventListener('click', () => {
+                currentLanguage = currentLanguage === 'ru' ? 'en' : 'ru';
+                localStorage.setItem('language', currentLanguage);
+                translatePage(currentLanguage);
+            });
+
             // Theme Toggle Functionality
             const themeToggle = document.querySelector('.theme-toggle');
-            const currentTheme = localStorage.getItem('theme');
+            const storedTheme = localStorage.getItem('theme');
 
-            if (currentTheme === 'dark') {
+            if (storedTheme === 'dark') {
                 document.body.classList.add('dark-mode');
                 themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
             }
@@ -1093,7 +1308,7 @@
 
                 if (!valid) {
                     e.preventDefault();
-                    alert('Please fill in all fields correctly.');
+                    alert(currentLanguage === 'ru' ? 'Пожалуйста, заполните все поля правильно.' : 'Please fill in all fields correctly.');
                 }
             });
 
@@ -1127,6 +1342,26 @@
                 if (e.target === modal) {
                     closeModal();
                 }
+            });
+
+            // Hamburger Menu Functionality
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                hamburger.innerHTML = navLinks.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+
+            // Close the menu when a link is clicked (optional)
+            const navItems = document.querySelectorAll('.nav-links li a');
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                });
             });
 
             // Optional: Remove Prevention of Right-Click and Keyboard Shortcuts
