@@ -423,6 +423,19 @@
             }
         }
 
+        /* Добавленный параграф о изучении ИИ */
+        .about-me .ai-study {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            animation: fadeInRight 1s forwards;
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
         /* Services Section */
         .services {
             display: grid;
@@ -664,6 +677,18 @@
         footer .social-footer-icons a:hover {
             color: var(--footer-link-hover);
             transform: scale(1.2);
+            animation: bounce 0.6s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
         }
         footer .copyright {
             color: var(--footer-text-color);
@@ -827,10 +852,12 @@
         .modal-content h2 {
             margin-bottom: 20px;
             color: var(--primary-color);
+            animation: fadeIn 1s ease-in;
         }
         .modal-content p {
             margin-bottom: 30px;
             color: #555;
+            animation: fadeIn 1s ease-in 0.5s;
         }
         .modal-content a {
             display: inline-block;
@@ -842,6 +869,7 @@
             text-decoration: none;
             font-size: 1em;
             transition: background-color 0.3s ease, transform 0.3s ease;
+            animation: fadeIn 1s ease-in 1s;
         }
         .modal-content a:hover {
             background-color: var(--primary-color);
@@ -864,6 +892,10 @@
         @keyframes slideDown {
             from { transform: translateY(-50px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         /* Footer Enhancements */
@@ -914,6 +946,7 @@
         footer .social-footer-icons a:hover {
             color: var(--footer-link-hover);
             transform: scale(1.2);
+            animation: bounce 0.6s infinite;
         }
         footer .copyright {
             color: var(--footer-text-color);
@@ -961,34 +994,36 @@
         <p class="name" data-i18n="profile_name">Серапин Андрей</p>
 
         <!-- Freelancer Button -->
-        <a href="https://www.freelancer.com/u/AndroVision" target="_blank" rel="noopener noreferrer" class="freelancer-button" aria-label="Contact AndroVision on Freelancer" data-i18n="button_freelancer"><i class="fab fa-freelancer"></i> Связаться на Freelancer</a>
+        <a href="https://www.freelancer.com/u/AndroVision" target="_blank" rel="noopener noreferrer" class="freelancer-button" aria-label="Contact AndroVision on Freelancer" data-i18n="button_freelancer" data-aos="zoom-in"><i class="fab fa-freelancer"></i> Связаться на Freelancer</a>
 
         <!-- About Me Section -->
         <section class="about-me fade-in fade-in-3" id="about" data-aos="fade-up">
             <h2 data-i18n="about_title">Обо мне</h2>
             <p data-i18n="about_paragraph1">Здравствуйте, я <strong>Серапин Андрей</strong>! Я профессионал в области веб-дизайна и разработки, специализирующийся на создании эффективных и адаптивных веб-сайтов с использованием искусственного интеллекта.</p>
             <p data-i18n="about_paragraph2">Моя цель — помочь бизнесам создавать сайты, которые не только привлекают внимание, но и приносят результаты. Используя ИИ, я автоматизирую создание контента, SEO-оптимизацию и анализ данных для продвинутых и эффективных решений.</p>
+            <!-- Добавленный параграф о изучении ИИ -->
+            <p class="ai-study" data-aos="fade-right">Я изучаю искусственный интеллект уже 7-8 месяцев, что позволяет мне эффективно применять передовые технологии в своих проектах и предоставлять клиентам инновационные решения.</p>
         </section>
 
         <!-- Services Section -->
         <section class="services fade-in fade-in-1" id="services" data-aos="fade-up">
-            <div class="service-item">
+            <div class="service-item" data-aos="fade-up">
                 <h3><i class="fas fa-laptop-code"></i> <span data-i18n="service_ai_creation">Создание веб-сайтов с ИИ</span></h3>
                 <p data-i18n="service_ai_creation_desc">Использование ИИ для создания веб-сайтов, адаптирующихся к потребностям бизнеса, с улучшенной производительностью и индивидуальными решениями.</p>
             </div>
-            <div class="service-item highlight">
+            <div class="service-item highlight" data-aos="zoom-in">
                 <h3><i class="fas fa-robot"></i> <span data-i18n="service_chatgpt_mastery">Мастерство ChatGPT</span></h3>
                 <p data-i18n="service_chatgpt_mastery_desc">Экспертиза в продвинутых навыках общения, разработке подсказок и использовании ChatGPT для кодирования, генерации контента и креативных решений.</p>
             </div>
-            <div class="service-item">
+            <div class="service-item" data-aos="fade-up">
                 <h3><i class="fas fa-search"></i> <span data-i18n="service_seo">SEO-оптимизация</span></h3>
                 <p data-i18n="service_seo_desc">Использование ИИ для анализа и оптимизации контента, повышения видимости и привлечения целевой аудитории.</p>
             </div>
-            <div class="service-item highlight">
+            <div class="service-item highlight" data-aos="zoom-in">
                 <h3><i class="fas fa-code"></i> <span data-i18n="service_advanced_programming">Продвинутое программирование с ChatGPT</span></h3>
                 <p data-i18n="service_advanced_programming_desc">Разработка скриптов, инструментов и автоматизаций с использованием возможностей кодирования ChatGPT для решения сложных задач.</p>
             </div>
-            <div class="service-item">
+            <div class="service-item" data-aos="fade-up">
                 <h3><i class="fas fa-file-alt"></i> <span data-i18n="service_content_automation">Автоматизация контента</span></h3>
                 <p data-i18n="service_content_automation_desc">Автоматизация создания текста и изображений с использованием ИИ, что экономит время и повышает качество контента.</p>
             </div>
@@ -997,23 +1032,23 @@
         <!-- Projects Section -->
         <section class="projects fade-in fade-in-2" id="projects" data-aos="fade-up">
             <h2 class="featured-title" data-i18n="projects_title">Избранные проекты</h2>
-            <div class="project-item highlight">
+            <div class="project-item highlight" data-aos="zoom-in">
                 <h3><i class="fas fa-globe"></i> <span data-i18n="project_poetry_translation">Приложение для перевода поэзии</span></h3>
                 <p data-i18n="project_poetry_translation_desc">Веб-приложение для перевода русской поэзии на английский язык с использованием ChatGPT. Приложение сохраняет эмоциональную и художественную ценность оригинала.</p>
                 <p>🔹 <span data-i18n="project_poetry_translation_note">*Приложение для перевода русской поэзии на английский язык, сохраняющее эмоциональную и художественную ценность оригинала.*</span></p>
-                <a href="https://englpoemvstix.vercel.app" target="_blank" rel="noopener noreferrer" class="project-button" aria-label="View Poetry Translation App Project" data-i18n="projects_button_view_project"><i class="fas fa-external-link-alt"></i> Посмотреть проект</a>
+                <a href="https://englpoemvstix.vercel.app" target="_blank" rel="noopener noreferrer" class="project-button" aria-label="View Poetry Translation App Project" data-i18n="projects_button_view_project" data-aos="fade-up"><i class="fas fa-external-link-alt"></i> Посмотреть проект</a>
             </div>
-            <div class="project-item highlight">
+            <div class="project-item highlight" data-aos="zoom-in">
                 <h3><i class="fas fa-globe"></i> <span data-i18n="project_miyagi_poetry">Приложение поэзии Мияги</span></h3>
                 <p data-i18n="project_miyagi_poetry_desc">Приложение, демонстрирующее поэзию Мияги, где эмоции передаются силой ИИ. Вдохновляйтесь искусством через технологии!</p>
                 <p>🔹 <span data-i18n="project_miyagi_poetry_note">*Приложение, демонстрирующее поэзию Мияги, где эмоции передаются силой ИИ.*</span></p>
-                <a href="https://miyagiandy.vercel.app" target="_blank" rel="noopener noreferrer" class="project-button" aria-label="View Miyagi Poetry App Project" data-i18n="projects_button_view_project"><i class="fas fa-external-link-alt"></i> Посмотреть проект</a>
+                <a href="https://miyagiandy.vercel.app" target="_blank" rel="noopener noreferrer" class="project-button" aria-label="View Miyagi Poetry App Project" data-i18n="projects_button_view_project" data-aos="fade-up"><i class="fas fa-external-link-alt"></i> Посмотреть проект</a>
             </div>
-            <div class="project-item highlight">
+            <div class="project-item highlight" data-aos="zoom-in">
                 <h3><i class="fas fa-globe"></i> <span data-i18n="project_elon_musk_news">Новостное приложение об Элон Маске</span></h3>
                 <p data-i18n="project_elon_musk_news_desc">Это приложение предоставляет свежие и актуальные новости об Элон Маске, демонстрируя последние разработки в его компаниях и начинаниях.</p>
                 <p>🔹 <span data-i18n="project_elon_musk_news_note">*Будьте в курсе всего, что касается Элона Маска.*</span></p>
-                <a href="https://ilon-mask-andy.vercel.app" target="_blank" rel="noopener noreferrer" class="project-button" aria-label="View Elon Musk News App Project" data-i18n="projects_button_view_project"><i class="fas fa-external-link-alt"></i> Посмотреть проект</a>
+                <a href="https://ilon-mask-andy.vercel.app" target="_blank" rel="noopener noreferrer" class="project-button" aria-label="View Elon Musk News App Project" data-i18n="projects_button_view_project" data-aos="fade-up"><i class="fas fa-external-link-alt"></i> Посмотреть проект</a>
             </div>
         </section>
 
@@ -1022,15 +1057,15 @@
             <h2 data-i18n="contact_title">Свяжитесь со мной</h2>
             <form action="telegram.php" method="POST" novalidate>
                 <label for="name" data-i18n="contact_label_name">Имя</label>
-                <input type="text" id="name" name="name" required aria-required="true" placeholder="Ваше имя" data-placeholder="contact_placeholder_name">
+                <input type="text" id="name" name="name" required aria-required="true" placeholder="Ваше имя" data-placeholder="contact_placeholder_name" data-aos="fade-right">
 
                 <label for="email" data-i18n="contact_label_email">Электронная почта</label>
-                <input type="email" id="email" name="_replyto" required aria-required="true" placeholder="Ваша почта" data-placeholder="contact_placeholder_email">
+                <input type="email" id="email" name="_replyto" required aria-required="true" placeholder="Ваша почта" data-placeholder="contact_placeholder_email" data-aos="fade-left">
 
                 <label for="message" data-i18n="contact_label_message">Сообщение</label>
-                <textarea id="message" name="message" rows="5" required aria-required="true" placeholder="Ваше сообщение" data-placeholder="contact_placeholder_message"></textarea>
+                <textarea id="message" name="message" rows="5" required aria-required="true" placeholder="Ваше сообщение" data-placeholder="contact_placeholder_message" data-aos="fade-up"></textarea>
 
-                <button type="submit" data-i18n="contact_button_send">Отправить сообщение</button>
+                <button type="submit" data-i18n="contact_button_send" data-aos="zoom-in">Отправить сообщение</button>
             </form>
         </section>
 
@@ -1039,7 +1074,7 @@
     </div>
 
     <!-- Back to Top Button -->
-    <button class="back-to-top" aria-label="Back to Top"><i class="fas fa-chevron-up"></i></button>
+    <button class="back-to-top" aria-label="Back to Top" data-aos="fade-up"><i class="fas fa-chevron-up"></i></button>
 
     <!-- Footer -->
     <footer>
@@ -1065,11 +1100,11 @@
 
     <!-- Modal for Boosty -->
     <div class="modal" id="boostyModal">
-        <div class="modal-content">
+        <div class="modal-content" data-aos="zoom-in">
             <button class="modal-close" aria-label="Close Modal">&times;</button>
             <h2 data-i18n="modal_title">Поддержите меня на Boosty!</h2>
             <p data-i18n="modal_description">Если вам нравится моя работа и вы хотите меня поддержать, пожалуйста, рассмотрите возможность подписки на мой аккаунт Boosty.</p>
-            <a href="https://boosty.to/andygptpro" target="_blank" rel="noopener noreferrer" data-i18n="modal_button_visit">Посетить Boosty</a>
+            <a href="https://boosty.to/andygptpro" target="_blank" rel="noopener noreferrer" data-i18n="modal_button_visit" data-aos="fade-up">Посетить Boosty</a>
         </div>
     </div>
 
